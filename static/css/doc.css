@@ -1,0 +1,188 @@
+/* Header Section */
+.header-section {
+    width: 513px;
+    height: 122px;
+}
+
+.form-title {
+    font-size: 48px;
+    line-height: 40px;
+    font-weight: bold;
+    font-family: Poppins;
+    height: 122px;
+    color: #7878AB;
+    margin-bottom: 20px;
+}
+
+/* Form Container */
+.form-container {
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+    margin-left: 20px;
+    padding-bottom: 100px;
+}
+
+/* Left and Right Sections */
+.section1{
+    width: 40%; /* Adjust width as needed */
+    float: left;
+    margin-right: 13%;
+    margin-top: -1px;
+     /* Space between sections */
+}
+.section2 {
+    width: 40%; /* Adjust width as needed */
+    float: left;
+    margin-right: 13%;
+     /* Space between sections */
+}
+
+.section2 {
+    margin-right: 20px; /* Remove margin for the last section */
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.L1 {
+    font-family: Hind;
+    font-weight: medium;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+.L2 {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    border-color: #CACACA;
+    width: 100%;
+    height: 46px;
+    padding: 10px;
+    font-family: Hind;
+    font-size: 14px;
+}
+
+.L3 {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    border-color: #CACACA;
+    width: 100%;
+    height: 46px;
+    padding: 10px;
+    font-family: Hind;
+    font-size: 14px;
+}
+.L4 {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    border-color: #CACACA;
+    width: 95%;
+    height: 23px;
+    padding: 10px;
+    font-family: Hind;
+    font-size: 14px;
+}
+
+/* Buttons */
+.button-group {
+    clear: both; /* Clear floats */
+    margin-left: 750px;
+    margin-top: 20px;
+}
+
+.btn-save,
+.btn-reset {
+    font-size: 24px;
+    font-family: Poppins;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 32px;
+    box-shadow: 0 20px 15px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.btn-save {
+    background-color: #F5F5FA;
+    color: #7878AB;
+    width: 150px;
+    height: 66px;
+}
+
+.btn-reset {
+    background-color: #F5F5FA;
+    color: #7878AB;
+    width: 150px;
+    height: 66px;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+@media (min-width: 768px) {
+    .section1,
+    .section2 {
+      width: 40%; /* Side-by-side on larger screens */
+      margin-bottom: 0;
+    }
+    .section1 {
+      margin-right: 13%;
+    }
+    .section2 {
+      /* Remove extra margin on the right if desired */
+      margin-right: 20px;
+    }
+  }
+@media (max-width: 480px) {
+    .form-title {
+      font-size: 36px;
+      height: auto;
+      line-height: 1.2;
+    }
+  
+    .btn-save,
+    .btn-reset {
+      font-size: 20px;
+      width: 120px;
+      height: 50px;
+      padding: 10px 20px;
+    }
+  }
+  @media (max-width: 768px) {
+    .form-title {
+      font-size: 36px;
+      height: auto;
+      line-height: 1.2;
+    }
+    
+    /* Adjust button sizes and spacing */
+    .btn-save,
+    .btn-reset {
+      font-size: 20px;
+      width: 130px;
+      height: 55px;
+      padding: 10px 20px;
+      margin: 5px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .btn-save,
+    .btn-reset {
+      font-size: 18px;
+      width: 110px;
+      height: 45px;
+      padding: 8px 16px;
+      margin: 5px;
+    }
+  }  

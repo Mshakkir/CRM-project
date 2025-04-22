@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Ticket - MyApp{% endblock %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/new_ticket.css' %}">
+<div class="form-container">
+    <h2>Edit Ticket</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <!-- Name Field -->
+            <div class="form-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="{{ ticket.name }}" placeholder="Enter name" required>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ ticket.email }}" placeholder="Enter email" required>
+            </div>
+
+            <!-- Contact Field -->
+            <div class="form-field">
+                <label for="contact">Contact</label>
+                <input type="text" id="contact" name="contact" value="{{ ticket.contact }}" placeholder="Enter contact">
+            </div>
+
+            <!-- CC Field -->
+            <div class="form-field">
+                <label for="cc">CC</label>
+                <input type="text" id="cc" name="cc" value="{{ ticket.cc }}" placeholder="CC">
+            </div>
+
+            <!-- Assign Ticket Field -->
+            <div class="form-field">
+                <label for="assign_ticket">Assign Ticket</label>
+                <input type="text" id="assign_ticket" name="assign_ticket" value="{{ ticket.assign_ticket }}" placeholder="Assign ticket">
+            </div>
+
+            <!-- Subject Field -->
+            <div class="form-field">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" value="{{ ticket.subject }}" placeholder="Enter subject" required>
+            </div>
+
+            <!-- Priority Field -->
+            <div class="form-field">
+                <label for="priority">Priority</label>
+                <select id="priority" name="priority">
+                    <option value="High" {% if ticket.priority == "High" %}selected{% endif %}>High</option>
+                    <option value="Medium" {% if ticket.priority == "Medium" %}selected{% endif %}>Medium</option>
+                    <option value="Low" {% if ticket.priority == "Low" %}selected{% endif %}>Low</option>
+                </select>
+            </div>
+
+            <!-- Service Field -->
+            <div class="form-field">
+                <label for="service">Service</label>
+                <input type="text" id="service" name="service" value="{{ ticket.service }}" placeholder="Enter service">
+            </div>
+
+            <!-- Department Field -->
+            <div class="form-field">
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department" value="{{ ticket.department }}" placeholder="Enter department">
+            </div>
+
+            <!-- Predefined Reply Field -->
+            <div class="form-field">
+                <label for="predefined_reply">Predefined Reply</label>
+                <textarea id="predefined_reply" name="predefined_reply" placeholder="Enter predefined reply">{{ ticket.predefined_reply }}</textarea>
+            </div>
+
+            <!-- Additional Notes Field -->
+            <div class="form-field">
+                <label for="additional_notes">Additional Notes</label>
+                <textarea id="additional_notes" name="additional_notes" placeholder="Enter additional notes">{{ ticket.additional_notes }}</textarea>
+            </div>
+
+            <!-- Knowledge Base Link Field -->
+            <div class="form-field">
+                <label for="knowledge_base">Knowledge Base Link</label>
+                <input type="url" id="knowledge_base" name="knowledge_base" value="{{ ticket.knowledge_base_link }}" placeholder="Enter knowledge base link">
+            </div>
+
+            <!-- File Upload Field -->
+            <div class="form-field">
+                <label for="file">Attachments</label>
+                <input type="file" id="file" name="file">
+                {% if ticket.file %}
+                    <p>Current File: <a href="{{ ticket.file.url }}" target="_blank">{{ ticket.file.name }}</a></p>
+                {% endif %}
+            </div>
+
+            <div class="form-field">
+                <label for="status">Status</label>
+                <select id="status" name="status">
+                    {% for value, label in ticket.STATUS_CHOICES %}
+                        <option value="{{ value }}" {% if ticket.status == value %}selected{% endif %}>
+                            {{ label }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+        </div>
+
+        <!-- Form Footer Buttons -->
+        <div class="form-footer">
+            <button type="button" class="cancel" onclick="location.href='{% url 'ticket_view' %}'">Cancel</button>
+            <button type="submit" class="update">Update</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

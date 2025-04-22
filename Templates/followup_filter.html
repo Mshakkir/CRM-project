@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}Follow Up Filter{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/followup_filter.css' %}">
+</head>
+<div class="fullbody">
+<form method="GET" action="">
+    <h4 class="head4">Filter By:</h4>
+    <div class="filter">
+        <div class="filter-column">
+            <label style="font-size: small;font-weight: lighter;">Doctor name :</label>
+            <input type="text" name="q" class="form-control" placeholder="Search Doctor" value="{{ request.GET.q }}"><br>
+            <label style="font-size: small;font-weight: lighter;">Staff name :</label>
+            <input type="text" name="assigned" class="form-control" placeholder="Search Staff" value="{{ request.GET.assigned }}"><br>
+            
+            
+            <label style="font-size: small;font-weight: lighter;">Mobile number :</label>
+            <select class="form-control1" name="Phone">
+                <option value="">Mobile Number</option>
+                {% for number in mobile_numbers %}
+                    <option value="{{ number }}">{{ number }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="filter-column2">
+            <label style="font-size: small;font-weight: lighter;">From date :</label>
+            <input class="form-control" type="date" name="from_date" placeholder="From Date" value="{{ from_date }}"><br>
+            <label  style="font-size: small;font-weight: lighter;">To date :</label>
+            <input class="form-control" type="date" name="to_date" placeholder="To Date" value="{{ to_date }}">
+        </div>
+
+        <div class="button-group">
+            <button class="btn-search" type="submit">Filter</button>
+            <button class="btn-reset" type="button" onclick="resetFilters()">Reset</button> 
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="btn-search" type="button">Full Data</button>
+        <button class="btn-search" type="submit">Past</button>
+        <button class="btn-search" type="submit">Future</button>
+        <button class="btn-search" type="submit">Today</button>
+    </div>
+</form>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>SL NO</th>
+            <th>Date</th>
+            <th>Doctor Name</th>
+            <th>Staff Name</th>
+            <th>Mobile Number</th>
+            <th>City</th>
+            <th>Reminders</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.next_follow_up }}</td>
+                <td>{{ item.doctor.Name }}</td>
+                <td>{{ item.follow.assigned }}</td>
+                <td>{{ item.doctor.Phone }}</td>
+                <td>{{ item.doctor.City }}</td>
+                <td>{{ item.reminder }}</td>
+            </tr>
+        
+        {% empty %}
+        <tr>
+          <td colspan="8" class="text-center">No results found.</td> 
+       </tr>
+                {% endfor %}
+    </tbody>
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if followup_filter.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ followup_filter.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ followup_filter.number }} of {{ followup_filter.paginator.num_pages }}.
+        </span>
+        {% if followup_filter.has_next %}
+            <a href="?page={{ followup_filter.next_page_number }}">next</a>
+            <a href="?page={{ followup_filter.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+<script>
+    function resetFilters() {
+        window.location.href = "{% url 'followup_filter' %}";
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'follow.html' %}
+
+{% block title %}follow up{% endblock %}
+
+{% block content %}
+{{ block.super }}
+{%load static %}
+ <head>
+<link rel="stylesheet" href="{% static 'css/follow_up.css' %}">
+</head>
+
+
+
+<form action="" method="POST">
+        {% csrf_token %}
+<div class="form-container">
+    <div class="form-group">
+        <label class="form-label">Next Follow Up</label>
+        <input type="date" class="date-input"id="next_follow_up" name="next_follow_up" required >
+    </div>
+
+    <div class="form-group">
+        <label class="form-label2">Description</label>
+        <textarea class="description-textarea"id="description" name="description" rows="4"></textarea>
+    </div>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-cancel">Cancel</button>
+        <button type="submit"class="btn btn-save">Save</button>
+    </div>
+</div>
+</form>
+
+{% endblock %}

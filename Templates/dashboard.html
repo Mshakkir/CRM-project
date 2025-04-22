@@ -1,0 +1,765 @@
+<!-- Templates/dashboard.html -->
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - MyApp{% endblock %}
+
+{% block content %}
+{% load static %}
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        
+        .welcome-card {
+            background: white;
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 
+            0 0 10px rgba(106, 106, 106, 0.1),  /* Top shadow */
+            -10px 0 10px rgba(117, 117, 117, 0.1),  /* Left shadow */
+            10px 0 10px rgba(96, 96, 96, 0.1),  /* Right shadow */
+            0 10px 10px rgba(76, 75, 75, 0.1);
+            position: relative;
+            overflow: hidden;
+            width: 1150px;
+            height: 150px;
+            min-height: 100px;
+        }
+
+        .welcome-text {
+            width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .doctor-image {
+            position: absolute;
+            right: 30px;
+            bottom: 0;
+            margin-bottom: 352px;
+            height: 230px;
+            width: 340px;
+            z-index: 1;
+        }
+
+        .welcome-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .welcome-subtitle {
+            color: #666;
+            font-size: 12px;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .date {
+            color: #666;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+        .card-container {
+            background: #fff;
+            border-radius: 25px;
+            overflow: hidden;
+            width: fit-content;
+            margin-top: 60px;
+            box-shadow: 0 16px 14px rgba(113, 113, 113, 0.1);
+        }
+        /* performance dashboard section */
+        .performance-section {
+            width: 500px;
+            height: 230px;
+            margin-top: 40px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+            /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+            margin-left: 2px;
+        }
+        .performance-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        .performance-item:last-child {
+            border-bottom: none;
+        }
+        .icon-circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .icon-circle.chart {
+            background-color: #6366F1; /* Purple */
+        }
+        .icon-circle.phone {
+            background-color: #DFF6FF; /* Light Blue */
+        }
+        .icon-circle i {
+            color: #fff;
+            font-size: 1.2rem;
+        }
+        .performance-text {
+            flex: 1;
+            margin-left: 15px;
+        }
+        .performance-title {
+            font-weight: bold;
+            margin: 0;
+        }
+        .performance-meta {
+            font-size: 0.85rem;
+            color: #6c757d; /* Gray */
+        }
+        .performance-score {
+            font-weight: bold;
+            font-size: 1rem;
+            color: #0d1b2a; /* Dark Navy */
+        }
+        .growthimg{
+            width: 22px;
+            height: 22px;
+        }
+        .phoneimg{
+            width: 20px;
+            height: 20px;
+        }
+    .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.dot-successful {
+    background-color: #6610f2;
+}
+
+.dot-sales {
+    background-color: #e83e8c;
+}
+
+.donut-chart {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    --successful-calls-color: #6610f2;
+    --sales-services-color: #e83e8c;
+    --remaining-color: #d1d0d0;
+}
+
+.donut-chart-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--successful-calls-color) 0 calc(var(--successful-calls) * 3.6deg), 
+        var(--sales-services-color) calc(var(--successful-calls) * 3.6deg) calc((var(--successful-calls) + var(--sales-services)) * 3.6deg), 
+        var(--remaining-color) calc((var(--successful-calls) + var(--sales-services)) * 3.6deg) 360deg
+    );
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.donut-chart-inner:hover {
+    transform: scale(1.05);
+}
+
+.donut-chart-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: 70%;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.legend-label {
+    font-size: 14px;
+    color: #666;
+}
+        .card {
+            border-radius: 12px;
+            border: none;
+            background: #ffffff;
+            /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
+        }
+
+        .card-title {
+            
+            color: #2d3748;
+            font-size: 1rem;
+        }
+        .circlecontainer{
+            margin-left: 130px;
+            margin-top: -232px;
+        }
+        .calendar-container {
+            margin-left: 830px;
+            margin-top: -270px;
+            max-width: 300px;
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+
+        }
+
+        h1 {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .days-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            gap: 4px;
+        }
+
+        .day-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4px 8px;
+            background: #f0f2f5;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .day-box.active {
+            background: #13123e;
+            color: white;
+        }
+
+        .day-number {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .day-name {
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+        .dots {
+            display: flex;
+            gap: 2px;
+            margin-top: 2px;
+        }
+
+        .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+        }
+
+        .meetings-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .time-slot {
+            color: #666;
+            margin-bottom: 4px;
+            font-size: 11px;
+        }
+
+        .meeting-card {
+            padding: 8px;
+            border-radius: 6px;
+            color: white;
+            position: relative;
+        }
+
+        .meeting-card.digital {
+            background: #6b4eff;
+        }
+
+        .meeting-card.ui {
+            background: #008080;
+        }
+
+        .meeting-card.data {
+            background: #e83e8c;
+        }
+
+        .meeting-title {
+            font-weight: bold;
+            margin-bottom: 2px;
+            font-size: 11px;
+        }
+
+        .meeting-description {
+            font-size: 9px;
+            opacity: 0.9;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .more-options {
+            position: absolute;
+            right: 8px;
+            top: 6px;
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .add-button {
+            position: absolute;
+            right: 8px;
+            bottom: 6px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .graph-container {
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    max-width: 700px;  /* Reduced from 600px */
+    margin-left: 30px;
+    margin-top: -200px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;  /* Reduced from 20px */
+    font-size: 0.9em;
+}
+
+.title {
+    font-size: 18px;  /* Reduced from 24px */
+    color: #333;
+    margin: 0;
+}
+
+.subtitle {
+    color: #888;
+    font-size: 12px;  /* Reduced from 14px */
+    margin: 3px 0 0 0;
+}
+
+.sort-section {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sort-label {
+    color: #888;
+    font-size: 12px;  /* Reduced from 14px */
+}
+
+.sort-select {
+    padding: 4px 8px;  /* Reduced padding */
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 12px;  /* Reduced from 14px */
+    color: #333;
+}
+
+.graph {
+    height: 200px;  /* Reduced from 300px */
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: flex-end;
+    padding-top: 15px;
+}
+
+.y-axis {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;  /* Reduced from 50px */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.y-label {
+    color: #888;
+    font-size: 10px;  /* Reduced from 12px */
+}
+
+.x-axis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding-left: 40px;  /* Reduced from 50px */
+}
+
+.month {
+    color: #888;
+    font-size: 10px;  /* Reduced from 12px */
+    flex: 1;
+    text-align: center;
+}
+
+.current-month {
+    color: #333;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+        .container {
+            width: 100%;
+            padding: 10px;
+        }
+        .welcome-card {
+            width: 100%;
+            height: auto;
+            padding: 15px;
+        }
+        .doctor-image {
+            width: 200px;
+            height: auto;
+            margin-bottom: 0;
+        }
+        .circlecontainer {
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        .calendar-container {
+            margin-left: 0;
+            margin-top: 20px;
+            max-width: 100%;
+        }
+        .performance-section {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+            margin-left: 0;
+            padding: 10px;
+        }
+        .donut-chart {
+            width: 80px;
+            height: 80px;
+        }
+        .percentage {
+            font-size: 16px;
+        }
+        .graph-container {
+            max-width: 100%;
+            margin-left: 0;
+            margin-top: 20px;
+        }
+        .days-container {
+            flex-wrap: wrap;
+        }
+        .day-box {
+            flex: 1 1 30%;
+            margin: 5px;
+        }
+        .x-axis {
+            flex-wrap: wrap;
+        }
+        .month {
+            flex: 1 1 20%;
+            font-size: 10px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .container {
+            padding: 5px;
+        }
+        .header-section, 
+        .form-title, 
+        .form-container, 
+        .calendar-container, 
+        .graph-container, 
+        .performance-section {
+            width: 100% !important;
+        }
+        .doctor-image {
+            width: 150px;
+        }
+        .donut-chart {
+            width: 60px;
+            height: 60px;
+        }
+        .percentage {
+            font-size: 14px;
+        }
+        .day-box {
+            flex: 1 1 45%;
+            margin: 3px;
+        }
+        .x-axis {
+            flex-wrap: wrap;
+        }
+        .month {
+            flex: 1 1 30%;
+            font-size: 8px;
+        }
+    }
+    @media (max-width: 768px) {
+    /* Other adjustments for tablets */
+    .doctor-image {
+        display: none;  /* Hide the doctor image on smaller screens */
+    }
+}
+
+
+    </style>
+
+
+    <div class="card-container">
+        <div class="welcome-card">
+            <div class="welcome-text">
+                <h1 class="welcome-title">Welcome back, {{ email }}!</h1>
+                <p class="welcome-subtitle">Always stay updated in your portal</p>
+                <p class="date">{{ date }}</p>
+            </div>
+        </div>
+        <img src="/static/images/Rectangle 22.png" alt="Medical professional with clipboard" class="doctor-image">
+        
+    </div>
+
+    <div class="performance-section">
+        <h6 class="mb-3">Performance</h6>
+        
+        <!-- First Item -->
+        <div class="performance-item">
+           <div class="d-flex align-items-center">
+              <div class="icon-circle chart">
+                <img src="{% static 'images/growth.png' %}" class="growthimg">
+                <i class="bi bi-bar-chart-line-fill"></i>
+              </div>
+              <div class="performance-text">
+                <p class="performance-title">ARI Team Performance</p>
+                <p class="performance-meta">5:12 pm • America</p>
+              </div>
+            </div>
+            <span class="performance-score">89.80%</span>
+        </div>
+        
+        <!-- Second Item -->
+        <div class="performance-item">
+            <div class="d-flex align-items-center">
+                <div class="icon-circle phone">
+                    <img src="{% static 'images/telephone.png' %}" class="phoneimg">
+                    <i class="bi bi-telephone-fill"></i>
+                </div>
+                <div class="performance-text">
+                    <p class="performance-title">Receiving Calls</p>
+                    <p class="performance-meta">5:12 pm • Australia</p>
+                </div>
+            </div>
+            <span class="performance-score">90.20%</span>
+        </div>
+    </div>
+
+
+
+
+      <!-- result dashboard section -->
+      <div class="circlecontainer">
+        <div class="container py-2">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="card">
+                        <div class="card-body p-2">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h2 class="card-title mb-0">Results</h2>
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-muted p-0" type="button">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <circle cx="5" cy="12" r="2"/>
+                                            <circle cx="12" cy="12" r="2"/>
+                                            <circle cx="19" cy="12" r="2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="donut-chart" style="--successful-calls: {{ successful_calls }}; --sales-services: {{ sales_services }};--remaining: {{ remaining }};">
+                                <div class="donut-chart-inner">
+                                    <div class="donut-segment successful-calls"></div>
+                                    <div class="donut-segment sales-services"></div>
+                                <div class="donut-segment remaining"></div>
+                                </div>
+                                <div class="donut-chart-center"></div>
+                                <div class="percentage">{{ percentage|floatformat:1 }}%</div>
+                            </div><br>
+    
+                            <div class="mx-auto" style="max-width: 120px;">
+                                <div class="legend-item">
+                                    <div class="legend-dot dot-successful"></div>
+                                    <div>Successful Calls</div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-dot dot-sales"></div>
+                                    <div>Sales Services</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="calendar-container">
+        <h1>Today, Meetings</h1><br>
+        
+        <div class="days-container">
+            <div class="day-box">
+                <span class="day-number">03</span>
+                <span class="day-name">Mon</span>
+                <div class="dots">
+                    <span class="dot" style="background: #FFA500"></span>
+                    <span class="dot" style="background: #FFD700"></span>
+                </div>
+            </div>
+            <div class="day-box">
+                <span class="day-number">04</span>
+                <span class="day-name">Tue</span>
+                <div class="dots">
+                    <span class="dot" style="background: #008080"></span>
+                </div>
+            </div>
+            <div class="day-box active">
+                <span class="day-number">05</span>
+                <span class="day-name">Wed</span>
+                <div class="dots">
+                    <span class="dot" style="background: #6b4eff"></span>
+                    <span class="dot" style="background: #FF69B4"></span>
+                </div>
+            </div>
+            <div class="day-box">
+                <span class="day-number">06</span>
+                <span class="day-name">Thu</span>
+                <div class="dots">
+                    <span class="dot" style="background: #FF69B4"></span>
+                </div>
+            </div>
+            <div class="day-box">
+                <span class="day-number">07</span>
+                <span class="day-name">Fri</span>
+                <div class="dots">
+                    <span class="dot" style="background: #90EE90"></span>
+                    <span class="dot" style="background: #98FB98"></span>
+                </div>
+            </div>
+        </div><br>
+
+        <div class="meetings-container">
+            <div>
+                <div class="time-slot">08 am</div>
+                <div class="meeting-card digital">
+                    <div class="meeting-title">Digital Marketing</div>
+                    <div class="meeting-description">Online marketing is the promotion of brands to connect.</div>
+                    <div class="more-options">...</div>
+                    <div class="add-button">+</div>
+                </div>
+            </div><br>
+
+            <div>
+                <div class="time-slot">10 am</div>
+                <div class="meeting-card ui">
+                    <div class="meeting-title">UI Development</div>
+                    <div class="meeting-description">A tech professional who carries out the process of conceiving, designing</div>
+                    <div class="more-options">...</div>
+                    <div class="add-button">+</div>
+                </div>
+            </div><br>
+
+            <div>
+                <div class="time-slot">11 am</div>
+                <div class="meeting-card data">
+                    <div class="meeting-title">Data Analysis</div>
+                    <div class="meeting-description">A process for obtaining raw data, and subsequently converting</div>
+                    <div class="more-options">...</div>
+                    <div class="add-button">+</div>
+                </div>
+            </div>
+        </div><br>
+    </div>
+    
+    <div class="graph-container">
+        <!-- <div class="header">
+            <div>
+                <h1 class="title">Statistics</h1>
+                <p class="subtitle">May 2022</p>
+            </div>
+            <div class="sort-section">
+                <span class="sort-label">Sort by:</span>
+                <select class="sort-select">
+                    <option>Monthly</option>
+                </select>
+            </div>
+        </div> -->
+        
+        <div class="graph">
+            <div class="y-axis">
+                <span class="y-label">2500</span>
+                <span class="y-label">2000</span>
+                <span class="y-label">1500</span>
+                <span class="y-label">1000</span>
+                <span class="y-label">500</span>
+                <span class="y-label">00</span>
+            </div>
+        </div>
+        
+        <div class="x-axis">
+            <span class="month">Jan</span>
+            <span class="month">Feb</span>
+            <span class="month">Mar</span>
+            <span class="month">Apr</span>
+            <span class="month current-month">May</span>
+            <span class="month">Jun</span>
+            <span class="month">Jul</span>
+            <span class="month">Aug</span>
+            <span class="month">Sep</span>
+            <span class="month">Oct</span>
+            <span class="month">Nov</span>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+
+{% endblock %}

@@ -1,0 +1,131 @@
+body {
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    margin-left: 40px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #ffffff;
+    max-width: 1120px;
+    width: 98%;
+    padding: 20px;
+}
+
+.form-container {
+    text-align: left;
+    margin-top: 80px;
+    flex: 1 1 100%; /* Takes full width by default */
+    min-width: 300px;
+}
+
+.form-container h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-container p {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container input {
+    width: 100%;
+    max-width: 370px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.form-container button {
+    width: 100%;
+    max-width: 400px;
+    height: 50px;
+    background: linear-gradient(to right, #c08ff9, #3E70A1);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    opacity: 0.9;
+}
+
+.illustration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 100%; /* Takes full width by default */
+    min-width: 300px;
+    margin-top: 20px;
+}
+
+.illustration-container img {
+    max-width: 100%;
+    height: auto;
+    width: 460px;
+    border-radius: 10px;
+}
+
+@media (min-width: 769px) {
+    .container {
+        flex-wrap: nowrap; /* Allows side-by-side layout for larger screens */
+    }
+
+    .form-container {
+        flex: 1 1 45%;
+        margin-top: 80px;
+    }
+
+    .illustration-container {
+        flex: 1 1 22%;
+        margin-top: 0;
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        flex-wrap: wrap; /* Stacks elements vertically */
+        justify-content: center; /* Center align elements */
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    .form-container {
+        flex: 1 1 100%; /* Take full width */
+        margin-top: 20px; /* Adjust top margin */
+        text-align: center; /* Center text alignment */
+    }
+
+    .form-container input {
+        max-width: 93%; /* Ensure inputs fit within smaller screens */
+        padding: 10px; /* Adjust padding for inputs */
+    }
+
+    .form-container button {
+        max-width: 100%; /* Ensure buttons fit within smaller screens */
+    }
+
+    .illustration-container {
+        flex: 1 1 100%; /* Take full width */
+        margin-top: 20px; /* Add space between sections */
+    }
+
+    .illustration-container img {
+        width: 100%; /* Make the image responsive */
+        max-width: 300px; /* Limit max size */
+        height: auto; /* Maintain aspect ratio */
+        margin: 0 auto; /* Center align image */
+    }
+}

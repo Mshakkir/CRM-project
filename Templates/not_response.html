@@ -1,0 +1,26 @@
+{% extends 'follow.html' %}
+
+{% block title %}Not Response{% endblock %}
+
+{% block content %}
+{{ block.super }}
+{%load static %}
+ <head>
+<link rel="stylesheet" href="{% static 'css/not_response.css' %}">
+</head>
+<form action="" method="POST">
+    {% csrf_token %}
+<div class="form-container">
+    <div class="form-group">
+        <label class="form-label">Next Calling</label>
+        <input type="date" class="date-input" name="next_calling" >
+    </div>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-cancel">Cancel</button>
+        <button type="submit" class="btn btn-save">Save</button>
+    </div>
+</div>
+
+
+{% endblock %}

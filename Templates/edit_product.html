@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit products{% endblock %}
+
+{% block content %}
+{%load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/edit_product.css' %}">
+</head>
+<div class="header-section">
+    <h2 class="form-title">Edit Products</h2>
+</div>
+
+<div class="form-section">
+    
+        <div class="section 1">
+            <div class="col-md-6">
+
+              <form action="{% url 'edit_product' product.id %}" method="POST">
+                  {% csrf_token %}
+              
+                 
+                <label for="productName" class="L1">Product Name</label><br>
+                <input type="text" class="L3" id="productName" placeholder="Enter Product Name"name="product_name"value="{{product.product_name}}"required>
+            </div>
+            <div class="col-md-6">
+                <label for="type" class="L1">Type</label><br>
+                <input type="text" class="L3" id="type" placeholder="Select a Type"name="type"value="{{product.type}}"required>
+            </div>
+        </div>
+        <div class="section2">
+            <div class="col-md-6">
+              
+                <label for="price" class="L1">Price</label><br>
+                <input type="text" class="L2" id="price" placeholder="Enter Price"name="price"value="{{product.price}}"required>
+             
+            </div>
+            <div class="col-md-6">
+                <label for="packages" class="L1">Packages</label><br>
+                <input type="text" class="L2" id="packages" placeholder="Select Your Packages"name="packages"value="{{product.packages}}"required>
+            </div>
+        </div>
+        <div class="button-group">
+          
+            <button type="submit" class="btn btn-save ">Save</button>
+            <button type="reset" class="btn btn-reset">Reset</button>
+        
+          </div>
+        </form>
+
+        {% endblock %}

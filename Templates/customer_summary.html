@@ -1,0 +1,120 @@
+<!-- Templates/dashboard.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - MyApp{% endblock %}
+
+{% block content %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers Summary</title>
+    <link rel="stylesheet" href="{% static 'css/customer_summary.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Customers Summary</h1>
+
+        <div class="summary-cards">
+            <div class="card">
+                <img src="{% static "images/group_blue.png" %}" alt="Total Customers" style="position:relative" "width:50px; height:50px; margin-bottom:10px;">
+                <h2>2000</h2>
+                <p>Total Customers</p>
+            </div>
+            <div class="card">
+                <img src="{% static "images/group_green.png" %}" alt="Total Customers" style="position:relative" "width:50px; height:50px; margin-bottom:10px;">
+                <h2>500</h2>
+                <p>Active Customers</p>
+            </div>
+            <div class="card">
+                <img src="{% static "images/group_orange.png" %}" alt="Total Customers" style="position:relative" "width:50px; height:50px; margin-bottom:10px;">
+
+                <h2>500</h2>
+                <p>In Active Customers</p>
+            </div>
+            <div class="card">
+                <img src="{% static "images/group_yellow.png" %}" alt="Total Customers" style= "position:relative" "width:50px; height:50px; margin-bottom:10px;">
+                <h2>500</h2>
+                <p>Active Contacts</p>
+            </div>
+            <div class="card">
+                {% comment %} <img src="{% static "images/group.png" %}" alt="Total Customers" style="position:relative" "width:50px; height:50px; margin-bottom:10px;">
+                <img src="{% static "images/frame.png" %}" alt="Total Customers"  style="position: absolute; width:50px; height:50px; margin-bottom:10px;"> {% endcomment %}
+                <div style="position: relative;">
+                    <!-- Background Image -->
+                    <img src="{% static "images/group.png" %}" alt="Background" style="width: 100px; height: 100px;">
+                  
+                    <!-- Overlay Image -->
+                    <img src="{% static "images/frame.png" %}" alt="Overlay" style="position: absolute; top: 21px; left: 58px; width: 50px; height: 50px;">
+                  </div>
+                  
+                <h2>500</h2>
+                <p>Closed Contacts</p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button>Export</button>
+            <select>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+            </select>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tracking ID</th>
+                        <th>Clinic Name</th>
+                        <th>Product Type</th>
+                        <th>Product Name</th>
+                        <th>Amount</th>
+                        <th>Paid Amount</th>
+                        <th>Balance</th>
+                        <th>Contact</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#20462</td>
+                        <td>Doctosmart</td>
+                        <td>Type</td>
+                        <td>CRM</td>
+                        <td>$4.95</td>
+                        <td>$4.95</td>
+                        <td>$4.95</td>
+                        <td>9876543210</td>
+                        <td class="actions">
+                            <a href="#">✏️</a>
+                            <a href="#">🗑️</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#18933</td>
+                        <td>Doctosmart</td>
+                        <td>Type</td>
+                        <td>CRM</td>
+                        <td>$8.95</td>
+                        <td>$8.95</td>
+                        <td>$4.95</td>
+                        <td>9876543210</td>
+                        <td class="actions">
+                            <a href="#">✏️</a>
+                            <a href="#">🗑️</a>
+                        </td>
+                    </tr>
+                    <!-- Add more rows as necessary -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+
+{% endblock %}

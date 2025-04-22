@@ -1,0 +1,45 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Doctor</title>
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+</head>
+<body>
+    {% block content %}
+    <div class="header-section">
+        <h1 class="form-title">Edit Doctor</h1>
+        <form method="post" action="{% url 'doctor_edit' doctor.Did %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="L1">First Name</label>
+                <input type="text" class="L2" name="Name" value="{{ doctor.Name }}">
+            </div>
+            <div class="form-group">
+                <label class="L1">Clinic Name</label>
+                <input type="text" class="L2" name="Clinic_name" value="{{ doctor.Clinic_name }}">
+            </div>
+            <div class="form-group">
+                <label class="L1">Email</label>
+                <input type="email" class="L2" name="Email" value="{{ doctor.Email }}">
+            </div>
+            <div class="form-group2">
+                <label class="L1">Phone Number</label>
+                <input type="text" class="L3" name="Phone" value="{{ doctor.Phone }}">
+            </div>
+            <div class="form-group2">
+                <label class="L1">Specialization</label>
+                <input type="text" class="L3" name="specialization" value="{{ doctor.specialization }}">
+            </div>
+            <div class="button-group clearfix">
+                <button type="submit" class="btn-save">Save</button>
+                <a href="{% url 'search' %}"><button type="button" class="btn-reset">Cancel</button></a>
+            </div>
+        </form>
+    {% endblock %}
+</body>
+</html>

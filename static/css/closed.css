@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
+
+/* Base Styles */
+.form-container {
+    width: 100%;
+    max-width: 626px;
+    height: auto;
+    margin: 20px auto;
+    padding: 39px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    margin-top: 0px;
+}
+
+.row {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.col-md-6,
+.col-md-6- {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+}
+
+.col-md-6- {
+    position: static;
+    margin-top: 20px;
+}
+
+.col-12 {
+    width: 100%;
+    max-width: 519px;
+    height: auto;
+    position: static;
+    margin-top: 20px;
+}
+
+.form-control2 {
+    width: 100%;
+    max-width: 604px;
+    height: 117px;
+    border-radius: 5px;
+    border-color: #cacaca;
+}
+
+.mb-3A {
+    position: relative;
+    top: 21px;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #333;
+    font-family: 'Hind', sans-serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.form-control,
+.form-control3,
+.form-select {
+    margin-bottom: 16px;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid #ddd;
+    color: #919191;
+    width: 100%;
+    max-width: 241px;
+    height: 48px;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.btn-container {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 377px;
+    height: auto;
+    justify-content: flex-end;
+    margin-top: 20px;
+    position: static;
+}
+
+.btn-cancel,
+.btn-save {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    padding: 8px 24px;
+    width: 100%;
+    max-width: 188px;
+    height: 42px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #666;
+}
+
+.btn-cancel:hover {
+    background: #f5f5f5;
+}
+
+.btn-save {
+    background: linear-gradient(to right, #307BC4, #274760);
+    color: white;
+    border: none;
+}
+
+.btn-save:hover {
+    background: #1f4871;
+}
+
+.menu-container {
+    width: 100%;
+    max-width: 379px;
+    height: auto;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    margin: 20px auto;
+    position: static;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .form-container {
+        margin-top: 50px;
+        padding: 20px;
+    }
+
+    .col-md-6,
+    .col-md-6- {
+        max-width: 100%;
+    }
+
+    .col-12 {
+        max-width: 100%;
+    }
+
+    .form-control2 {
+        max-width: 100%;
+    }
+
+    .btn-container {
+        max-width: 100%;
+        justify-content: center;
+    }
+
+    .btn-cancel,
+    .btn-save {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        margin-top: 20px;
+        padding: 15px;
+    }
+
+    .form-label {
+        font-size: 14px;
+    }
+
+    .btn-cancel,
+    .btn-save {
+        font-size: 12px;
+        height: 36px;
+    }
+}

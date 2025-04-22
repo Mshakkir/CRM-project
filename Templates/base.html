@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MyApp{% endblock %}</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/newleads.css' %}"> {% endcomment %}
+{% comment %} 
+    
+    <link rel="stylesheet" href="{% static 'css/ticket_view.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new_ticket.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'css/leadsview.css' %}"> {% endcomment %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        .toggle-btn {
+            border: none;
+            background: none;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px;
+            outline: none;
+        }
+        
+        .toggle-btn:hover {
+            opacity: 0.8;
+        }
+        </style>
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        {% include 'menu.html' %}
+    </div>
+
+   <!-- Header -->
+<div class="header" id="header">
+    <button class="toggle-btn" id="toggleBtn">&#9776;</button>
+    <div class="header-items">
+        <input type="text" class="search-bar" placeholder="Search">
+        <div class="user-profile">
+            <img src="{% static 'images/Profile.png' %}" alt="User Profile" class="profile-icon">
+            <span class="username">{{email}}</span>
+            <span class="user-role">3rd year</span>
+        </div>
+        <div class="icon bell-icon">
+            <img src="{% static 'images/bellringing.png' %}" alt="Notifications">
+        </div>
+    </div>
+</div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const header = document.getElementById('header');
+        const mainContent = document.getElementById('main-content');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('expanded');
+            header.classList.toggle('sidebar-expanded');
+            mainContent.classList.toggle('sidebar-expanded');
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.innerWidth < 768) {
+                sidebar.classList.remove('expanded');
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 768) {
+                sidebar.classList.remove('expanded');
+            }
+        });
+    </script>
+</body>
+</html>

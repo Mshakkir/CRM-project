@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Base styles with relative units */
+.doctor-card {
+  margin: 0 auto;
+  width: 100%;
+  /* max-width: 363px; */
+  height: auto;
+  padding: 1rem;
+  
+}
+.doctor1{
+  position:relative;
+  left:161px;
+  bottom:173px;
+}
+.doctor {
+  width: 35%;
+  max-width: 125px;
+  height: auto;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  margin: 1rem;
+  background-color: #D6F6DE;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.doctor-name {
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(14px, 2vw, 16px);
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.doctor-speciality {
+  font-size: clamp(12px, 1.8vw, 14px);
+  font-weight: 500;
+  color: gray;
+  text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.sp {
+  width: 100%;
+  max-width: 108px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.lc {
+  width: 100%;
+  max-width: 130px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.doctor-location,
+.doctor-clinic {
+  font-size: clamp(9px, 1.5vw, 10px);
+  color: gray;
+  text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.connect {
+  background: linear-gradient(to right, #307BC4, #274760);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 362px;
+  height: auto;
+  min-height: 51px;
+  padding: 0.8rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: clamp(14px, 2vw, 16px);
+  color: #ffffff;
+}
+
+.connect:hover {
+  background: #1f4871;
+}
+
+.button {
+  width: 27px;
+  height: 28px;
+  position: relative;
+  bottom: 178px;
+  left:294px;
+  border: none;
+  background-color: #ffffff;
+}
+.mt-3{
+  position: relative;
+  bottom: 152px;
+}
+
+
+/* Menu styles */
+.menu-container_followup {
+  width: 99%;
+
+  height: auto;
+  font-family: 'Inter', sans-serif;
+  margin: -10rem auto;
+  overflow: hidden;
+}
+
+.menu-list_followup {
+  background: white;
+  border: none;
+  width: 27%;
+}
+
+.menu-item_followup {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.menu-item_followup:hover {
+  background-color: #4587B5;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .doctor-card {
+    padding: 0.5rem;
+  }
+  
+  .doctor {
+    margin: 0.5rem;
+  }
+  
+  .connect {
+    padding: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .menu-container_followup {
+    width: 95%;
+    margin: 0.5rem auto;
+  }
+  
+  .menu-item_followup {
+    padding: 0.4rem 0.8rem; 
+  }
+  
+  .button {
+    top: -30px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .doctor-card {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    justify-content: space-between;
+  }
+
+  .doctor {
+    margin: 1rem;
+  }
+}
+
+/* Tablet View */
+@media screen and (max-width: 768px) {
+  .doctor-card {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .doctor {
+    width: 50%;
+    max-width: 150px;
+  }
+
+  .connect {
+    font-size: 14px;
+    padding: 0.6rem;
+  }
+}
+
+/* Mobile View */
+@media screen and (max-width: 480px) {
+  .doctor {
+    width: 80%;
+    max-width: 120px;
+  }
+
+  .doctor-name {
+    font-size: 14px;
+  }
+
+  .connect {
+    font-size: 12px;
+    min-height: 45px;
+  }
+
+  .menu-container_followup {
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-list_followup {
+    width: 100%;
+  }
+
+  .button {
+    position: relative;
+    left: auto;
+    top: auto;
+    margin: 10px auto;
+  }
+}

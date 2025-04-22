@@ -1,0 +1,168 @@
+.fullbody{
+  position:relative;
+  overflow-x: hidden;
+  margin-left: 20px;
+}
+.filter{
+    max-width: 1200px;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+.row {
+    width: auto;
+    height:370px;
+    position: fixed;
+}
+.A1{
+    width: 381px;
+    height:74.78px;
+}
+.filter-column{
+
+    height: 154px;
+    width: 465px;
+    
+}
+.filter-column2{
+    height: 154px;
+    width: 465px;
+    position: relative;
+    left: 483px;
+    bottom:155px
+}
+
+.filter-column3{
+height: 154px;
+    width: 465px;
+    position: relative;
+    left: 964px;
+    bottom:308px
+}
+
+.form-label{
+    font-size: 16px;
+   
+}
+.form-control{
+    width: 380.93px;
+    height: 41.02px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #919191;
+    margin: 10px;
+}   
+.form-control1{
+  width: 400px;
+  height: 41.02px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  padding: 0 10px;
+  font-size: 14px;
+  color: #919191;
+  margin: 10px;
+}   
+
+.button-group{
+    position:relative;
+    left:500px;
+    bottom:115px;
+}
+.buttons{
+  position:relative;
+  left:20px;
+  bottom:60px;
+}
+
+
+.btn-search{
+  font-size: 16px;
+  font-family: Poppins;
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 32px;
+  box-shadow: 0 16px 14px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
+  background-color: #F5F5FA;
+  color: #7878AB;
+     
+}
+.btn-reset{
+  font-size: 16px;
+  font-family: Poppins;
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 32px;
+  box-shadow: 0 16px 14px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
+  background-color: #F5F5FA;
+  color: #7878AB;
+     
+}
+      
+.btn-search:hover,.btn-reset:hover {
+        background: #d9ddde7e;
+}
+      
+    
+.button-group2{
+    position:relative;
+    left:3px;
+     bottom:242px;
+}
+.btn{
+    background-color: #F5F5FA;
+        border:none;
+        color: #7878AB;
+        font-size: 24px;
+        font-weight: bold;
+        width: 150px;
+        height: 66px;
+        box-shadow: 0 20px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 32px;
+}
+.table{
+  width:1053px;
+  height: 402px;
+  position: fixed;
+}
+tr{
+  width:918.48px;
+  height: 63.59px;
+  background-color:F7F6FE ;
+  text-align: center;
+ 
+}  
+
+th{
+  width:227.71px;
+  height: 19.31px;
+  text-align: center;
+  background-color: #ffffff; 
+}
+
+td{
+  width:227.71px;
+  height: 19.31px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #ffffff; 
+}
+tr:nth-child(odd) {
+  background-color: #F7F6FE; 
+}
+
+
+
+
+
+
+

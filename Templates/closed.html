@@ -1,0 +1,142 @@
+{% extends 'follow.html' %}
+
+{% block title %}Closed{% endblock %}
+
+{% block content %}
+{{ block.super }}
+{%load static %}
+ <head>
+<link rel="stylesheet" href="{% static 'css/closed.css' %}">
+</head>
+<form action="" method="POST">
+    {% csrf_token %}
+<div class="form-container">
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+    <form method>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Product Type</label><br>
+                    <select class="form-select" name="product_type">
+                        <option >Select Item</option>
+                        <option >Software</option>
+                        <option >Hardware</option>
+                        <option >Gadgets</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" >Product</label><br>
+                    <select class="form-select" name="product">
+                        <option >Select Product</option>
+                        <option >CMS</option>
+                        <option >IVF</option>
+                        <option >Laptop</option>
+                        <option >Mobile</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Quantity</label><br>
+                    <select class="form-select" name="quantity">
+                        <option disabled selected>Quantity</option>
+                        <option >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" >Price</label><br>
+                    <input type="text" class="form-control"  name="price" placeholder="Price">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" >Discount</label><br>
+                    <input type="text" class="form-control" name="discount" placeholder="Discount">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" >Offer</label><br>
+                    <select class="form-select" name="offer">
+                        <option >Select Offer</option>
+                        <option >50% offer</option>
+                        <option >Buy 1 Get 1</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6-">
+                <div class="mb-3">
+                    <label class="form-label">Installation Type</label><br>
+                    <select class="form-select" name="installation_type">
+                        <option >Select Type</option>
+                        <option >Onsite installation</option>
+                        <option >Remote Installation</option>
+                        <option >Self installation </option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Installation Date</label><br>
+                    <input type="date" class="form-control" name="installation_date">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Duration From</label><br>
+                    <input type="date" class="form-control"  name="duration_from">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" >Duration To</label><br>
+                    <input type="date" class="form-control" name="duration_to">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Payment Type</label><br>
+                    <select class="form-select"name="payment_type">
+                        <option>Select Payment</option>
+                        <option>UPI</option>
+                        <option >Net banking</option>
+                        <option>Debit card</option>
+
+
+
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Payment</label><br>
+                    <input type="text" class="form-control"  name="payment"placeholder="Amount">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="mb-3">
+                    <label class="form-label"  >Description</label><br>
+                    <textarea class="form-control2" name="description"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button type="button" class="btn btn-cancel">Cancel</button>
+            <button type="submit" class="btn btn-save">Save</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+{% endblock %}
+
+

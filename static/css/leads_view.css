@@ -1,0 +1,126 @@
+/* .button-group{
+  width: 380px;
+  height: 66px;
+  margin-top: 40px;
+  position: relative;
+} */
+.leads_view {
+    max-width: 1200px;
+    margin: auto;
+    margin-left: 30px;
+  }
+  .form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .form-group {
+    flex: 1;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+  }
+  .head4{
+    margin-left: 2px;
+    color: #504A4A;
+    font-size: 20px;
+    font-family: poppins;
+    margin-top: 40px;
+  }
+  .selectbox{
+    height: 40px;
+    font-size: smaller;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 4px;
+  }
+  .pagination {
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    margin-top: 80px;
+  }
+  
+  .pagination button {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .pagination button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .pagination .active {
+    background-color: #6200ea;
+    color: #fff;
+    border-color: #6200ea;
+  }
+  .pagination {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .framebutton{
+    background-color: #fff;
+    border: #F5F5FA;
+  }
+  .refreshbutton{
+    background-color: #fff;
+    height: 90px;
+    width: 100px;
+  }
+  .leadbutton{
+    font-size: 16px;
+    font-family: Poppins;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 32px;
+    box-shadow: 0 16px 14px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+    background-color: #F5F5FA;
+    color: #7878AB;
+  }
+  p{
+    font-size: 17px;
+    color: #504A4A;
+    font-family: poppins;
+  }
+  
+  .table{
+    width:1053px;
+    height: 402px;
+  }
+  tr{
+    width:918.48px;
+    height: 63.59px;
+    background-color:#b0a6ec ;
+    text-align: center;
+   
+  }  
+  
+  th{
+    width:227.71px;
+    height: 19.31px;
+    background-color:#ffffff;
+    text-align: center;
+  }
+  
+  td{
+    width:227.71px;
+    height: 19.31px;
+    text-align: center;
+  }
+  
+  tr:nth-child(even) {
+    background-color:#ffffff; 
+  }
+  
+  tr:nth-child(odd) {
+    background-color:#F7F6FE ; 
+  }

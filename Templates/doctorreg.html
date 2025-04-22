@@ -1,0 +1,99 @@
+<!-- Templates/dashboard.html -->
+{% extends 'base.html' %}
+
+
+{% block title %}Doctor - MyApp{% endblock %}
+
+{% block content %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/doc.css' %}">
+</head>
+<div class="header-section">
+    <h1 class="form-title">New Doctor</h1>
+</div>
+
+<div class="form-container">
+    <form action="{% url 'doctor' %}" method="POST">
+        {% csrf_token %}
+        <!-- Left Section -->
+        <div class="section1">
+            <div class="form-group">
+                <label for="title" class="L1">Title</label>
+                <select id="title" name="title" class="L2" required>
+                    <option value="">--Select Title--</option>
+                    <option value="Dr">Dr</option>
+                    <option value="Prof">Prof</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Ms">Ms</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="L1">Phone Number</label>
+                <input type="tel" id="phone" name="Phone" class="L4" required>
+            </div>
+            <div class="form-group">
+                <label for="email" class="L1">Email Address</label>
+                <input type="email" id="email" name="Email" class="L4" required>
+            </div>
+            <div class="form-group">
+                <label for="state" class="L1">State</label>
+                <select name="state" id="state"class="L2">
+                    <option value="">--Select State--</option>
+                    {% for code,name in state_choices %}
+                        <option value="{{ code }}">{{ name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="call_status" class="L1">Call Status</label>
+                <select id="call_status" name="call_status" class="L2" required>
+                    <option value="">--Select Call Status--</option>
+                    <option value="contacted">Contacted</option>
+                    <option value="not_contacted">Not Contacted</option>
+                    <option value="follow_up">Follow Up</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="section2">
+            <div class="form-group">
+                <label for="name" class="L1">Full Name</label>
+                <input type="text" id="name" name="Name" class="L4" required>
+            </div>
+            <div class="form-group">
+                <label for="clinic_name" class="L1">Clinic/Hospital Name</label>
+                <input type="text" id="clinic_name" name="Clinic_name" class="L4" required>
+            </div>
+            <div class="form-group">
+                <label for="specialization" class="L1">Specialization</label>
+                <select id="specialization" name="specialization" class="L2" required>
+                    <option value="">--Select Specialization--</option>
+                    <option value="cardiology">Cardiology</option>
+                    <option value="dermatology">Dermatology</option>
+                    <option value="neurology">Neurology</option>
+                    <option value="orthopedics">Orthopedics</option>
+                    <option value="pediatrics">Pediatrics</option>
+                    <option value="general_practice">General Practice</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city" class="L1">City</label>
+                <input type="text" id="city" name="City" class="L4" required>
+            </div>
+            <div class="form-group">
+                <label for="age" class="L1">Age</label>
+                <input type="text" id="age" name="Age" class="L4" required>
+            </div>
+        </div><br>
+
+        <!-- Buttons -->
+        <div class="button-group">
+            <a href="{% url 'search' %}"><button type="button" class="btn-reset">Cancel</button></a>
+            <button type="submit" class="btn-save">Save</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

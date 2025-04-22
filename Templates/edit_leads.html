@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% block title %}New-Leads{% endblock %}
+{% block content %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/newleads.css' %}">
+</head>
+<div class="container">
+    <div class="form-header">
+        <h1>Edit Leads</h1>
+    </div>
+    <form action="{% url 'edit_lead' lead.id %}" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group">
+                <label for="state">Status</label>
+                <select id="Status" name="status">
+                    <option disabled>Select Your State</option>
+                    <option value="">Nothing Selected </option>
+                <option value="pending" {% if lead.status == "pending" %}selected{% endif %}>Pending</option>
+                <option value="follow-up" {% if lead.status == "follow-up" %}selected{% endif %}>Follow Up</option>
+                <option value="lead" {% if lead.status == "lead" %}selected{% endif %}>Lead</option>
+                <option value="closed" {% if lead.status == "closed" %}selected{% endif %}>Closed</option>
+                <option value="customer" {% if lead.status == "customer" %}selected{% endif %}>Customer</option> 
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="specialization">Specialization</label>
+                <select id="specialization" name="specialization">
+                    <option disabled>Specialization</option>
+                    <option value="General"      {% if lead.specialization == "General" %}selected{% endif %}>General</option>
+                    <option value="Cardiology"   {% if lead.specialization == "Cardiology" %}selected{% endif %}>Cardiology</option>
+                    <option value="Neurology"    {% if lead.specialization == "Neurology" %}selected{% endif %}>Neurology</option>
+                    <option value="Orthopedics"  {% if lead.specialization == "Orthopedics" %}selected{% endif %}>Orthopedics</option>
+                    <option value="Oncology"     {% if lead.specialization == "Oncology" %}selected{% endif %}>Oncology</option>
+                    <option value="Psychiatry"   {% if lead.specialization == "Psychiatry" %}selected{% endif %}>Psychiatry</option>
+                    <option value="Dermatology"  {% if lead.specialization == "Dermatology" %}selected{% endif %}>Dermatology</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="assigned">Assigned</label>
+                <select id="assigned" name="assigned">
+                    <option disabled>Assign</option>
+                    <option value="Adarsh">Adarsh</option>
+                <option value="Shabeer">Shabeer</option>
+                <option value="Shajahan">Shajahan</option>
+                <option value="Vaishak">Vaishak</option>
+                <option value="Sathpriyan">Sathpriyan</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="mode">Mode</label>
+                <input type="text" id="mode" name="mode" placeholder="mode" value="{{ lead.mode }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" value="{{ lead.name }}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Enter Address" value="{{ lead.address }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="position">Position</label>
+                <input type="text" id="position" name="position" placeholder="Position" value="{{ lead.position }}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="City" value="{{ lead.city }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Email Address" value="{{ lead.email }}" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="State" value="{{ lead.state }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="website">Website</label>
+                <input type="url" id="website" name="website" placeholder="Website" value="{{ lead.website }}" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" placeholder="Country" value="{{ lead.country }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="Phone" value="{{ lead.phone }}" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="zipcode">Zip Code</label>
+                <input type="text" id="zipcode" name="zipcode" placeholder="Zip Code" value="{{ lead.zipcode }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="clinic">Clinic Name</label>
+                <input type="text" id="clinic" name="clinic_name" placeholder="Clinic Name" value="{{ lead.clinic_name }}" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="language">Default Language</label>
+                <input type="text" id="language" name="default_language" placeholder="Default Language" value="{{ lead.default_language }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                <input type="text" id="priority" name="priority" placeholder="Priority" value="{{ lead.priority }}" required>
+            </div>
+        </div>
+        <div>
+            <div>
+                <!-- <label class="text-area">Additional Note</label> -->
+                <p class="label1">Additional Note</p>
+                <textarea class="new-area"  id="notes" name="notes" placeholder="notes" rows="5" colomn="44" required>{{ lead.notes }}</textarea>
+            </div>
+        </div>
+        <div class="form-action">
+            <form action="{% url 'leads' %}" method="POST">
+                <button type="submit" class="submit">Save</button>
+                <button type="submit" class="cancel" formaction="{% url 'leads' %}" formmethod="GET">Cancel</button>
+            </form>
+        </div>
+
+
+    </form>
+</div>
+
+{% endblock %}

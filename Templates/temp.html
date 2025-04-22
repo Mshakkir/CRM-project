@@ -1,0 +1,485 @@
+{% extends 'base.html' %}
+
+{% block title %}Search - MyApp{% endblock %}
+
+{% block content %}
+{%load static%}
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <style>
+        .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+/* Flex Layout */
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+/* Grid System */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col-md-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+/* Button Styles */
+.btnnew {
+    width:189.75px;
+    height:65.53px;
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    border-radius: 32px;
+    box-shadow: 0 20px 15px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+    background-color: #F5F5FA;
+  color: #7878AB;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.btn-secondary {
+    border-radius: 32px;
+    box-shadow: 0 20px 15px rgba(0, 0, 0, 0.1);
+    border: none;
+    width:189.75px;
+    height:65.53px;
+    background-color: #F5F5FA;
+  color: #7878AB;
+    
+   
+}
+
+/* Form Controls */
+.form-control {
+    display: block;
+    height:55px;
+    width:555px;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+}
+
+.form-select {
+    display: block;
+    width:555px;
+    height:55px;
+    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+
+.filter-column1{
+    position:relative;
+    left:626px;
+    bottom:73px;
+}
+
+.filter-column3{
+    position:relative;
+    left:626px;
+    bottom:73px;
+}
+.filter-column4{
+    position:relative;
+    
+    bottom:73px;
+}
+
+
+
+.table{
+    width:1053px;
+    height: 402px;
+  }
+  tr{
+    width:918.48px;
+    height: 63.59px;
+    background-color:F7F6FE ;
+    text-align: center;
+   
+  }  
+  
+  th{
+    width:227.71px;
+    height: 19.31px;
+    background-color:#ffffff;
+    text-align: center;
+  }
+  
+  td{
+    width:227.71px;
+    height: 19.31px;
+    text-align: center;
+  }
+  
+  tr:nth-child(even) {
+    background-color:#ffffff; 
+  }
+  
+  tr:nth-child(odd) {
+    background-color:#F7F6FE ; 
+  }
+
+  .icon-button1{
+    position:relative;
+    left:692px;
+    bottom:108px;
+   
+    font-size: 30px;;
+    background-color:#ffffff;
+    border:none;
+    color:#5F6368;
+   
+    
+  }
+  .icon-button2{
+    position:relative;
+    left:692px;
+    bottom:108px;
+ 
+    font-size: 30px;;
+
+    color:#5F6368;
+    
+  }
+   .icon-button4{
+     
+     font-size: 20px;
+    background: transparent;
+    border:none;
+    color:red;
+  } 
+  .icon-button3{
+    
+    font-size: 26px;
+  }
+/* Links */
+a {
+    color: inherit;
+    text-decoration: none;
+  
+
+}
+
+/* Images in buttons */
+button img,
+a img {
+    max-height: 20px;
+    vertical-align: middle;
+    
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .row {
+        flex-direction: column;
+    }
+    
+    .d-flex {
+        flex-direction: column;
+    }
+    
+    .btnnew {
+        margin: 10px 0;
+    }
+}
+/* Additional Responsive Overrides */
+
+/* Tablet and Smaller Devices */
+@media (max-width: 768px) {
+  /* Adjust Form Controls to fill available width */
+  .form-control,
+  .form-select {
+    width: 100%;
+    max-width: 100%;
+    /* Allow the control to shrink in height if needed */
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  /* Remove fixed positioning offsets from filter columns */
+  .filter-column1,
+  .filter-column3,
+  .filter-column4 {
+    position: static;
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+
+  /* Make the table container scrollable on smaller screens */
+  .table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+  }
+
+  /* Reposition icon buttons to flow with the content */
+  .icon-button1,
+  .icon-button2,
+  .icon-button3,
+  .icon-button4 {
+    position: static;
+    margin: 0.5rem;
+    display: inline-block;
+  }
+
+  /* Ensure grid columns stack vertically */
+  .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 15px;
+    margin-bottom: 1rem;
+  }
+
+  /* If using flex layouts, stack them vertically */
+  .d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+  /* Reduce button sizes and adjust fonts for smaller screens */
+  .btnnew,
+  .btn-secondary {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    font-size: 18px;  /* slightly smaller font size */
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  /* Further adjust form controls for mobile */
+  .form-control,
+  .form-select {
+    font-size: 1rem;
+    padding: 0.375rem 0.75rem;
+  }
+}
+
+
+    </style>
+</head>
+
+<div class="container">
+    <!-- Action Buttons Section -->
+    <div class="action-buttons">
+        <a href="doctor/">
+            <button class="btnnew">New Doctor</button>
+        </a>
+        <a href="new_product/">
+        <button class="btn btn-secondary">New Product</button>
+       </a>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <h4>Filter by:</h4>
+        <form method="GET" action="{% url 'search' %}">
+        
+            <div class="filter-row">
+                <!-- Global Search -->
+                <div class="filter-column">
+                    <label class="form-label">Global Search</label>
+                    <input type="text" name="q" class="form-control" placeholder="Global Search" value="{{ request.GET.q }}">
+                </div>
+                
+                <!-- Specialization Dropdown -->
+                <div class="filter-column1">
+                    <label class="form-label">Specialization</label>
+                    <select name="specialization" class="form-select">
+                        <option value="">Select a Specialization</option>
+                        {% for spec in specializations %}
+                            <option value="{{ spec }}" 
+                                    {% if request.GET.specialization == spec.id|stringformat:"s" %}
+                                    selected
+                                    {% endif %}>
+                                {{ spec }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <!-- Status Dropdown -->
+                <div class="filter-column">
+                    <label class="form-label">Status</label>
+                    <select name="status" class="form-select">
+                        <option value="">Status</option>
+                        <option value="Active" 
+                                {% if request.GET.status == "Active" %}selected{% endif %}>
+                            Active
+                        </option>
+                        <option value="Inactive" 
+                                {% if request.GET.status == "Inactive" %}selected{% endif %}>
+                            Inactive
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="filter-row">
+                <!-- State Dropdown -->
+                <div class="filter-column3">
+                    <label class="form-label">States</label>
+                    <select name="state" class="form-select">
+                        <option value="">All</option>
+                        {% for state in states %}
+                            <option value="{{ state }}" 
+                                    {% if request.GET.state == state %}selected{% endif %}>
+                                {{ state }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <!-- City Dropdown -->
+                <div class="filter-column4">
+                    <label class="form-label">City</label>
+                    <select name="city" class="form-select">
+                        <option value="">Select City</option>
+                        {% for city in cities %}
+                            <option value="{{ city }}" 
+                                    {% if request.GET.city == city %}selected{% endif %}>
+                                {{ city }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <!-- Search and Reset Buttons -->
+                <div class="filter-column button-group">
+                    <button type="submit" class="icon-button1">
+                        <i class="bi bi-search"></i>
+                        
+                    </button>
+                    <a href="{% url 'search' %}" class="icon-button2">
+                        <i class="bi bi-arrow-clockwise"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Doctors Table -->
+    <div class="table-container">
+        <table class="doctors-table">
+            <thead>
+                <tr>
+                    <th>SL NO</th>
+                    <th>Name</th>
+                    <th>Specialization</th>
+                    <th>Phone Number</th>
+                    <th>City</th>
+                    <th>Clinic</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doctor in doctors %}
+                    <tr>
+                        <td>#{{ forloop.counter }}</td>
+                        <td>
+                            <a href="{% url 'follow' doctor.Did %}" class="doctor-name">
+                                {{ doctor.Name }}
+                            </a>
+                        </td>
+                        <td>{{ doctor.specialization }}</td>
+                        <td>{{ doctor.Phone }}</td>
+                        <td>{{ doctor.City }}</td>
+                        <td>{{ doctor.Clinic_name }}</td>
+                        <td>{{ doctor.call_status }}</td>
+                        <td class="action-cell">
+                            <a href="{% url 'doctor_edit' doctor.Did %}" class="icon-button3">
+                                <img src="{% static 'images/edit (1) 2.png' %}" alt="Edit">
+                            </a>
+                            <button onclick="confirmDelete('{{ doctor.Name }}', '{{ doctor.Did }}')" 
+                                    class="icon-button4">
+                                    <i class="bi bi-trash"></i>
+                            </button>
+                        </td>   
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="8" class="empty-message">No results found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+    <script>
+        function confirmDelete(doctorName, doctorId) {
+            if (confirm('Are you sure you want to delete ' + doctorName + '?')) {
+                window.location.href = "{% url 'doctor_delete' '0' %}".replace("0", doctorId);
+            }
+        }
+    </script>
+
+{% endblock%}

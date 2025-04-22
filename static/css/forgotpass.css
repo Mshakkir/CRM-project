@@ -1,0 +1,134 @@
+body {
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    margin-left: 40px;
+        }
+
+.forgot-password-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #ffffff;
+    max-width: 1120px;
+    width: 98%;
+    padding: 20px;
+    }
+
+.form-section {
+    text-align: left;
+    margin-top: 80px;
+    flex: 1 1 100%; /* Takes full width by default */
+    min-width: 300px;
+        }
+
+.form-section h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+        }
+
+.form-section p {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 20px;
+            
+           
+        }
+
+.form-section form {
+    display: flex;
+    flex-direction: column;
+        }
+
+.form-section .formsample {
+    width: 100%;
+    max-width: 370px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 20px;
+        }
+.form-section button {
+    width: 100%;
+    max-width: 400px;
+    height: 50px;
+    background: linear-gradient(to right, #c08ff9, #3E70A1);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+        }
+
+.form-section button:hover {
+            opacity: 0.9;
+        }
+
+.illustration-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 100%; /* Takes full width by default */
+    min-width: 300px;
+    margin-top: 20px;
+        }
+
+.illustration-section img {
+    max-width: 100%;
+    height: auto;
+    width: 460px;
+    border-radius: 10px;
+        }
+
+/* Desktop View (Default) */
+@media(min-width: 769px) {
+
+  .forgot-password-container {
+    flex-wrap: nowrap;
+    }
+
+    .form-section {
+    flex: 1 1 45%;
+    margin-top: 80px;
+    }
+
+    .illustration-section {
+        flex: 1 1 22%;
+        margin-top: 0;
+    }
+}
+
+/* Tablet View */
+@media (max-width: 768px) {
+
+    .forgot-password-container {
+        flex-wrap: wrap; /* Stacks elements vertically */
+        justify-content: center; /* Center align elements */
+        padding: 10px;
+    }
+
+    .form-section {
+        flex: 1 1 100%; /* Take full width */
+        margin-top: 20px; /* Adjust top margin */
+        text-align: center;
+    }
+
+    .form-section .formsample,
+    .form-section button {
+        max-width: 93%; /* Ensure inputs fit within smaller screens */
+        padding: 10px;
+    }
+    .illustration-section {
+        flex: 1 1 100%; /* Take full width */
+        margin-top: 20px; /* Add space between sections */
+    }
+
+    .illustration-section img {
+        width: 100%; /* Make the image responsive */
+        max-width: 300px; /* Limit max size */
+        height: auto; /* Maintain aspect ratio */
+        margin: 0 auto; /* Center align image */
+}
+}
+

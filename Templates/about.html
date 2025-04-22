@@ -1,0 +1,71 @@
+<!-- Templates/about.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - Doctosmart{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<main>
+    <section class="about-section">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <h1 class="hero-title">About Us</h1>
+                <p class="hero-description">
+                    Here at Doctosmart, we understand the need for practitioners to manage their practice anywhere, anytime.
+                </p>
+            </div>
+
+            <!-- Our Mission and Values Section -->
+            <div class="mission-values">
+                <!-- Our Mission -->
+                <div class="mission">
+                    <h2 class="section-title">Our Mission</h2>
+                    <p>
+                        Customer Relationship Management (CRM) systems are essential tools for organizations to manage and analyze customer interactions throughout the customer lifecycle. This project focuses on the development of a comprehensive CRM platform designed to enhance customer engagement, streamline sales and support processes, and improve overall operational efficiency.                   </p>
+                    <p>
+                        By leveraging technology to create a centralized repository for customer data and interactions, the CRM project aims to foster stronger customer relationships, increase retention rates, and support data-driven decision-making for long-term business success.                    </p>
+                </div>
+
+                <!-- Our Values -->
+                <div class="values">
+                    <h2 class="section-title">Our Values</h2>
+                    <ul>
+                        <li>Innovation: Leading healthcare with advanced CRM technology.</li>
+                        <li>Reliability: Trusted by healthcare professionals globally.</li>
+                        <li>Customer-Centric: We focus on your success and the well-being of your patients.</li>
+                    </ul>
+                </div>
+            </div>
+
+   <!-- Contact Us Section -->
+<div class="card contact-card">
+    <h3 class="card-title">Contact Us</h3>
+    <div class="card-body">
+        <p class="contact-description">
+            If you have any questions or need support, feel free to reach out to us. We're here to help!
+        </p>
+        <ul class="contact-info">
+            <li><strong>Phone:</strong> +1 234 567 890</li>
+            <li><strong>Email:</strong> <a href="mailto:support@doctosmart.com">support@doctosmart.com</a></li>
+            <li><strong>Address:</strong> Doctosmart enterprices pvt ltd, Sahya building 3rd floor Govt Cyberpark, Kozhikode, Kerala</li>
+        </ul>
+        <div class="social-links">
+            <h4>Connect With Us:</h4>
+            <a href="https://www.facebook.com/doctosmart" target="_blank" class="social-icon facebook">Facebook</a>
+            <a href="https://twitter.com/doctosmart" target="_blank" class="social-icon twitter">Twitter</a>
+            <a href="https://www.linkedin.com/company/doctosmart" target="_blank" class="social-icon linkedin">LinkedIn</a>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="footer-container">
+        <p>© 2025 Doctosmart. All rights reserved.</p>
+    </div>
+</footer>
+{% endblock %}

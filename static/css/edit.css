@@ -1,0 +1,173 @@
+/* Header Section */
+.header-section {
+    width: 100%;
+    max-width: 513px;
+    height: auto;
+    margin: 51px;
+    padding: 20px;
+}
+
+.form-title {
+    font-size: 48px;
+    line-height: 40px;
+    font-weight: bold;
+    font-family: Poppins;
+    color: #7878AB;
+    margin-bottom: 20px;
+   
+}
+
+/* Form Container */
+.form-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+/* Form Sections */
+.section1,
+.section2 {
+    width: 48%;
+    float: left;
+    margin-right: 2%;
+}
+
+.section2 {
+    margin-right: 0;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group2 {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.L1 {
+    font-family: Hind;
+    font-weight: 500;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+.L2, .L3 {
+    border: 1px solid #CACACA;
+    border-radius: 6px;
+    width: 100%;
+    height: 46px;
+    padding: 10px;
+    font-family: Hind;
+    font-size: 14px;
+}
+
+/* Buttons */
+.button-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-save,
+.btn-reset {
+    font-size: 24px;
+    font-family: Poppins;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 32px;
+    box-shadow: 0 20px 15px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+    background-color: #F5F5FA;
+    color: #7878AB;
+    width: 150px;
+    height: 66px;
+}
+
+/* Clearfix */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Responsive Design */
+@media screen and (min-width: 1024px) {
+    .form-group2 {
+        left: 590px;
+        bottom: 328px;
+    }
+    
+    .button-group {
+        position: relative;
+        left: 590px;
+        bottom: 305px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .section1,
+    .section2 {
+        width: 100%;
+        float: none;
+        margin-right: 0;
+    }
+
+    .form-group2 {
+        position: static;
+        left: auto;
+        bottom: auto;
+    }
+
+    .button-group {
+        position: static;
+        left: auto;
+        bottom: auto;
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header-section {
+        padding: 15px;
+    }
+
+    .form-title {
+        font-size: 36px;
+        line-height: 32px;
+    }
+
+    .btn-save,
+    .btn-reset {
+        font-size: 20px;
+        width: 130px;
+        height: 56px;
+        margin: 5px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .form-title {
+        font-size: 28px;
+        line-height: 24px;
+    }
+
+    .btn-save,
+    .btn-reset {
+        width: 100%;
+        max-width: 200px;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .L2, .L3 {
+        height: 40px;
+    }
+}

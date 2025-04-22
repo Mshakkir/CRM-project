@@ -1,0 +1,240 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin-left: 260px;
+    align-items: center;
+    height: 100vh;
+    background: #fff;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    /* border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
+    width: 810px;
+
+}
+
+.login-form {
+    flex: 1;
+    padding-right: 20px;
+    font-family: poppins;
+    margin-left: -150px;
+    
+}
+
+.login-form h1 {
+    font-size: 25px;
+    margin-bottom: 10px;
+    font-family: poppins;
+}
+
+.login-form p {
+    margin-bottom: 13px;
+    color: #555;
+    font-family: poppins;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    font-family: poppins;
+    font-size: 5px;
+    color: 666666;
+    width: 320px;
+    height: 20px;
+    margin-top: 40px;
+    
+    
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    /* font-weight: bold; */
+    font-family: poppins;
+}
+
+.form-group input {
+    width: 350px;
+    height: 30px;
+    padding: 10px;
+    border: 1px solid #dddcdc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: poppins;
+    font-size: small;
+    border-radius: 10px;
+    
+    
+}
+
+.form-group .password-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: x-small;
+}
+
+.form-group .password-toggle input {
+    flex: 1;
+}
+
+.form-group .password-toggle .toggle-btn {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #080707;
+}
+
+.form-links {
+    display: flex;
+    font-size: 13px;
+    /* margin-bottom: 20px; */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400; 
+    margin-top: 43px;
+    margin-left: 215px;
+
+}
+.link1{
+    margin-left: 40px;
+}
+.form-links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.form-links a:hover {
+    text-decoration: underline;
+}
+
+.login-btn {
+    width: 370px;
+    padding: 10px;
+    background: linear-gradient(to right, #c08ff9, #3E70A1);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 40px;
+    margin-left: -3px;
+    font-size: smaller;
+    font-family: poppins;
+    font-weight: bold;
+    height: 50px;
+}
+
+.login-btn:hover {
+    opacity: 0.9;
+}
+
+.image-container {
+    flex: 1;
+    text-align: right;
+    
+
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+/* Desktop View */
+@media screen and (min-width: 1024px) {
+    body {
+        margin-left: 260px;
+        display: flex;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        width: 810px;
+        display: flex;
+        align-items: center;
+    }
+
+    .login-form {
+        margin-left: -150px;
+    }
+}
+
+/* Tablet View */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    body {
+        margin-left: 0;
+        display: block;
+        height: auto;
+    }
+
+    .container {
+        width: 100%;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .login-form {
+        margin-left: 0;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .image-container {
+        display: block;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+/* Mobile View */
+@media screen and (max-width: 767px) {
+    body {
+        margin-left: 0;
+        display: block;
+        height: auto;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .login-form {
+        margin-left: 0;
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .form-group input {
+        width: 100%;
+    }
+
+    .login-btn {
+        width: 100%;
+    }
+
+    .image-container {
+        display: block; /* Changed from 'none' to 'block' */
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .image-container img {
+        max-width: 80%; /* Ensures image doesn't overflow */
+        height: auto;
+    }
+
+    .form-links {
+        margin-left: 0;
+        justify-content: center;
+    }
+}

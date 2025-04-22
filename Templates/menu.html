@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+<ul class="menu">
+    <div class="logo">
+        <img src="{% static 'images/Logo.png' %}" alt="Logo">
+    </div>
+    <li><a href="{% url 'dashboard'%}"><img class="menu-icon" src="{% static 'images/dashboard.png' %}" alt="Dashboard"><span class="menu-text">Dashboard</span></a></li>
+    <li><a href="{% url 'ticket_view' %}"><img class="menu-icon" src="{% static 'images/tickets.png' %}" alt="Tickets"><span class="menu-text">Tickets</span></a></li>
+    <li><a href="{% url 'search' %}"><img class="menu-icon" src="{% static 'images/search.png' %}" alt="Search"><span class="menu-text">Search</span></a></li>
+    <li><a href="{% url 'customer_summary'%}"><img class="menu-icon" src="{% static 'images/customer.png' %}" alt="Customer"><span class="menu-text">Customer</span></a></li>
+    <li><a href="{% url 'leads'%}"><img class="menu-icon" src="{% static 'images/leads.png' %}" alt="Leads"><span class="menu-text">Leads</span></a></li>
+    <li><a href="{% url 'followup_filter' %}"><img class="menu-icon" src="{% static 'images/followup.png' %}" alt="Follow-up"><span class="menu-text">Follow-up</span></a></li>
+    <li><a href="{% url 'about' %}"><img class="menu-icon" src="{% static 'images/about-logo.png' %}" alt="about"><span class="menu-text">About</span></a></li>
+    <li><a href="{% url 'logout'%}"><img class="menu-icon" src="{% static 'images/logout.png' %}" alt="Logout"><span class="menu-text">Logout</span></a></li>
+</ul>

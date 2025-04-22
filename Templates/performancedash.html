@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Dashboard</title>
+    <!-- Bootstrap & Icons CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        } */
+
+        .dashboard-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .performance-row {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .icon-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .icon-circle.purple {
+            background-color: #7c4dff;
+            color: white;
+        }
+
+        .icon-circle.blue {
+            background-color: #e3f2fd;
+            color: #2196f3;
+        }
+
+        .metric-info {
+            flex-grow: 1;
+        }
+
+        .metric-name {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .metric-detail {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .more-options {
+            color: #666;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .results-section {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .donut-chart {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+        }
+
+        .donut-chart .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .chart-legend {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px 0;
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .legend-dot.purple {
+            background-color: #7c4dff;
+        }
+
+        .legend-dot.pink {
+            background-color: #ff4081;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="dashboard-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="mb-0">Performance</h5>
+                        <div class="more-options">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-row">
+                        <div class="icon-circle purple">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="metric-info">
+                            <div class="metric-name">ARI Team Performance</div>
+                            <div class="metric-detail">5:12 pm • America</div>
+                        </div>
+                        <div class="metric-value">89.80%</div>
+                    </div>
+
+                    <div class="performance-row">
+                        <div class="icon-circle blue">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="metric-info">
+                            <div class="metric-name">Receiving Calls</div>
+                            <div class="metric-detail">5:12 pm • Australia</div>
+                        </div>
+                        <div class="metric-value">90.20%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="dashboard-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="mb-0">Results</h5>
+                        <div class="more-options">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="results-section">
+                        <div class="donut-chart">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="12"/>
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="#7c4dff" stroke-width="12"
+                                    stroke-dasharray="339.292" stroke-dashoffset="118.752"
+                                    transform="rotate(-90 60 60)"/>
+                            </svg>
+                            <div class="percentage">65%</div>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-dot purple"></span>
+                                <span>Successful Calls</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot pink"></span>
+                                <span>Sales Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

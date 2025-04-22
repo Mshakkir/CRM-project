@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block title %}Search - MyApp{% endblock %}
+
+{% block content %}
+{%load static%}
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+</head>
+<div class="container">
+    <!-- Action Buttons Section -->
+    <div class="action-buttons">
+        <a href="doctor/">
+            <button class="btnnew">New Doctor</button>
+        </a>
+        <a href="new_product/">
+            &nbsp;<button class="btn btn-secondary">New Product</button>
+       </a>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <h4 class="head4">Filter by:</h4>
+        <form method="GET" action="{% url 'search' %}">
+        
+            <div class="filter-row">
+                <!-- Global Search -->
+                <div class="filter-column">
+                    <label class="form-label">Global Search</label><br>
+                    <input type="text" name="q" class="form-control" placeholder="Global Search" value="{{ request.GET.q }}">
+                </div>
+                
+                <!-- Specialization Dropdown -->
+                <div class="filter-column1">
+                    <label class="form-label">Specialization</label>
+                    <select name="specialization" class="form-select">
+                        <option value="">&nbsp;Select a Specialization</option>
+                        {% for spec in specializations %}
+                            <option value="{{ spec }}" 
+                                    {% if request.GET.specialization == spec.id|stringformat:"s" %}
+                                    selected
+                                    {% endif %}>
+                                {{ spec }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <!-- Status Dropdown -->
+                <div class="filter-column2">
+                    <label class="form-label">Status</label>
+                    <select name="status" class="form-select">
+                        <option value="">&nbsp;Status</option>
+                        <option value="contacted" {% if request.GET.status == "contacted" %}selected{% endif %}>Contacted</option>
+                    <option value="not_contacted" {% if request.GET.status == "not_contacted" %}selected{% endif %}>Not Contacted</option>
+                    <option value="follow_up" {% if request.GET.status == "follow_up" %}selected{% endif %}>Follow Up</option>
+        
+                    </select>
+                </div>
+            </div>
+
+            <div class="filter-row">
+                <!-- State Dropdown -->
+                <div class="filter-column3">
+                    <label class="form-label">States</label>
+                    <select name="state" class="form-select">
+                        <option value="">&nbsp;All</option>
+                        {% for state in states %}
+                            <option value="{{ state }}" 
+                                    {% if request.GET.state == state %}selected{% endif %}>
+                                {{ state }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <!-- City Dropdown -->
+                <div class="filter-column4">
+                    <label class="form-label">City</label>
+                    <select name="city" class="form-select">
+                        <option value="">&nbsp;Select City</option>
+                        {% for city in cities %}
+                            <option value="{{ city }}" 
+                                    {% if request.GET.city == city %}selected{% endif %}>
+                                {{ city }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <!-- Search and Reset Buttons -->
+                <div class="filter-column button-group">
+                    <button type="submit" class="icon-button1">
+                        <i class="bi bi-search"></i>
+                        
+                    </button>
+                    <a href="{% url 'search' %}" class="icon-button2">
+                        <i class="bi bi-arrow-clockwise"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Doctors Table -->
+    <div class="table-container">
+        <table class="doctors-table">
+            <thead>
+                <tr>
+                    <th>SL NO</th>
+                    <th>Name</th>
+                    <th>Specialization</th>
+                    <th>Phone Number</th>
+                    <th>City</th>
+                    <th>Clinic</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doctor in doctors %}
+                    <tr>
+                        <td>#{{ forloop.counter }}</td>
+                        <td>
+                            <a href="{% url 'follow' doctor.Did %}" class="doctor-name">
+                                {{ doctor.Name }}
+                            </a>
+                        </td>
+                        <td>{{ doctor.specialization }}</td>
+                        <td>{{ doctor.Phone }}</td>
+                        <td>{{ doctor.City }}</td>
+                        <td>{{ doctor.Clinic_name }}</td>
+                        <td>{{ doctor.call_status }}</td>
+                        <td class="action-cell">
+                            <a href="{% url 'doctor_edit' doctor.Did %}" class="icon-button3">
+                                <img src="{% static 'images/edit (1) 2.png' %}" alt="Edit">
+                            </a>
+                            <button onclick="confirmDelete('{{ doctor.Name }}', '{{ doctor.Did }}')" 
+                                    class="icon-button4">
+                                    <i class="bi bi-trash"></i>
+                            </button>
+                        </td>   
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="8" class="empty-message">No results found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+    <script>
+        function confirmDelete(doctorName, doctorId) {
+            if (confirm('Are you sure you want to delete ' + doctorName + '?')) {
+                window.location.href = "{% url 'doctor_delete' '0' %}".replace("0", doctorId);
+            }
+        }
+    </script>
+
+{% endblock%}

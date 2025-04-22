@@ -1,0 +1,232 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 60px;
+    height: 100vh;
+    background-color: #4587B5;
+    color: #fff;
+    position: fixed;
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+
+.sidebar.expanded {
+    width: 250px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ddd;
+    padding: 1em;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+}
+
+.menu li a:hover {
+    background-color: #495057;
+    color: #fff;
+}
+
+.menu-icon {
+    width: 25px; /* Reduced size for better alignment */
+    height:25px;
+    margin-right: 10px;
+}
+
+.menu-text {
+    display: none;
+}
+
+.sidebar.expanded .menu-text {
+    display: inline;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;    /* Set the height of the logo */
+    display: block;  /* Remove any inline spacing */
+    margin: 10px auto;  /* Center the logo */
+    padding: 0;   /* Add some spacing around the logo */
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribute items evenly */
+    height: 60px;
+    background-color: transparent;
+    padding: 0 20px; /* Increased padding for better spacing */
+    position: fixed;
+    top: 0;
+    left: 60px;
+    width: calc(100% - 60px);
+    z-index: 1000;
+    transition: left 0.3s ease, width 0.3s ease;
+}
+
+.sidebar.expanded ~ .header {
+    left: 250px;
+    width: calc(100% - 250px);
+}
+
+/* Header Items */
+.header-items {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between each header item */
+}
+
+.search-bar {
+    flex-grow: 1; /* Ensures the search bar takes up available space */
+    height: 35px;
+    max-width: 600px; /* Ensures it doesn't exceed a certain width */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    padding: 0 10px;
+}
+
+/* User Profile */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between profile icon and text */
+    white-space: nowrap;
+}
+
+/* Profile Icon */
+.profile-icon {
+    width: 60px; /* Reduced size for better alignment */
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Username and Role */
+.username {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.user-role {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+/* Notification Icon */
+.bell-icon img {
+    width: 30px; /* Reduced size */
+    height: 30px;
+    cursor: pointer;
+    margin-right: 30px;
+
+}
+/* Main Content */
+.main-content {
+    margin-top: 60px;
+    margin-left: 60px;
+    flex: 1;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.expanded ~ .main-content {
+    margin-left: 250px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 50px;
+    }
+
+    .sidebar.expanded {
+        width: 200px;
+    }
+
+    .header {
+        left: 50px;
+        width: calc(100% - 50px);
+    }
+
+    .sidebar.expanded ~ .header {
+        left: 200px;
+        width: calc(100% - 200px);
+    }
+    .header-items {
+        flex-wrap: wrap; /* Wrap items if screen width is small */
+        gap: 10px;
+    }
+
+    .search-bar {
+        flex-grow: 0; /* Prevents the search bar from stretching too much */
+        width: 60%; /* Adjust width for smaller screens */
+    }
+
+    .user-profile {
+        gap: 5px; /* Reduced gap for smaller screens */
+    }
+
+    .profile-icon {
+        width: 30px; /* Smaller size for profile icon */
+        height: 30px;
+    }
+
+    .bell-icon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .main-content {
+        margin-left: 50px;
+    }
+
+    .sidebar.expanded ~ .main-content {
+        margin-left: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start; /* Align items to the left */
+        padding: 10px;
+    }
+
+    .header-items {
+        width: 100%; /* Full-width for small screens */
+        justify-content: space-between;
+    }
+
+    .search-bar {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+   
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+}
